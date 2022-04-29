@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ReqResListPok, PokLink } from '../interfaces/reqResponse';
-import { ButtonPrimary, ContainerAround, Cuadrado } from '../styles';
+import { ButtonPrimary, ContainerAround, Cuadrado, Logo, Title } from '../styles';
 
 import '../styles/listPokemons.css';
+import { ContainerEnd } from '../styles/index';
 
-export const Welcome = () => {
+export const ListPokemons = () => {
     const [pokemons, setPokemons] = useState<PokLink[]>([]);
     const [prev, setPrev] = useState<string|null>(null);
     const [next, setNext] = useState<string|null>(null);
@@ -43,9 +44,11 @@ export const Welcome = () => {
                         const id = getIdPokemon(pokemon.url);
                         return(
                             <div key={pokemon.name}>
-                                <Link to={`/pokemon/${id}`}>
-                                    <h3>{pokemon.name}</h3>
-                                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} alt="" />
+                                <Link style={{textDecoration: 'none'}} to={`/pokemon/${id}`}>
+                                    <ContainerAround hover>
+                                        <Logo src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} alt="" />
+                                        <Title>{pokemon.name}</Title    >
+                                    </ContainerAround>
                                 </Link>
                                 <hr />
                             </div>
@@ -54,10 +57,13 @@ export const Welcome = () => {
                 </Cuadrado>
             }
             <div className='absoluteBottom'>
-                <ContainerAround>
-                    {!!prev && <ButtonPrimary onClick={() =>  setUri(prev)}>Prev</ButtonPrimary>}
-                    {!!next && <ButtonPrimary onClick={() => setUri(next)}>Next</ButtonPrimary>}
-                </ContainerAround>
+                <div className='relative'>
+                    <div className='fondoBotones'></div>
+                    <ContainerEnd>
+                        <ButtonPrimary disabled={!prev} onClick={() => setUri(prev!)}>Prev</ButtonPrimary>
+                        <ButtonPrimary disabled={!next} onClick={() => setUri(next!)}>Next</ButtonPrimary>
+                    </ContainerEnd>
+                </div>
             </div>
         </div>
     )

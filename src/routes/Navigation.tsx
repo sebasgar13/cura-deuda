@@ -1,16 +1,15 @@
-import {BrowserRouter, Routes, Route, Link, Outlet} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Outlet} from 'react-router-dom';
+import { Home } from '../components/Home';
 import { Pokemon } from '../components/Pokemon';
-import { Welcome } from '../components/Welcome';
+import { ListPokemons } from '../components/ListPokemons';
+import { ListBerries } from '../components/ListBerries';
 
 export const Navigation = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/'
-                    element={<>
-                        <Link to={"pokemon"}>Lista</Link>
-                        <Outlet />
-                    </>}>
+                    element={<Home />}>
                     
                     <Route path="pokemon" element={<>
                         <Outlet />
@@ -18,15 +17,24 @@ export const Navigation = () => {
                         <Route
                             index
                             element={<>
-                                <h2>Hola</h2>
-                                <Welcome />
+                                <ListPokemons />
                             </>
                             }
                         />
                         <Route path=":pokemonId" element={<Pokemon />} />
                     </Route>
-                    <Route path='home' element={<Welcome />} />
-                    <Route path='about' element={<h1>About</h1>} />
+                    <Route path="berries" element={<>
+                        <Outlet />
+                    </>}>
+                        <Route
+                            index
+                            element={<>
+                                <ListBerries />
+                            </>
+                            }
+                        />
+                        <Route path=":berriesId" element={<Pokemon />} />
+                    </Route>
                 </Route>
             </Routes>
         </BrowserRouter>
