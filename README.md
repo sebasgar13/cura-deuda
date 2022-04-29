@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 Esta aplicación es creada con [Create React App](https://github.com/facebook/create-react-app).
-
+Aplicación desplegada [PokeApi-Sebas](https://sebas-developer-pokeapi.netlify.app/).
 ## Scripts con NPM
 
 Utilizando NPM como gestor de paquetes
@@ -41,3 +41,13 @@ Construye la aplicación (app) para producción en la carpeta `build`.\
 
 The build is minified and the filenames include the hashes.\
 Para subir la aplicación a producción se debe subir el contenido de la carpeta  (`\build`) generada con el comando `yarn build`. En teoría no se necesita hacer nada más. 
+
+
+## Despliegue en Netlify
+Para desplegar la aplicación en Netlify se selecciona add new site y se arrastra la carpeta build/
+
+![plot](./public/despliegue1.png);
+
+Se deja caer sobre la parte indicada y se espera a que se despliegue el sitio.
+
+![plot](./public/despliegue2.png);
