@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
-import { MenuHamb } from "./MenuHamb"
+import { MenuHamb } from "../../features/menu/MenuHamb"
 
-interface Props {
-    showMenu: () => void;
-}
-
-export const Header = ({showMenu}:Props) => {
+export const Header = () => {
     return (
         <>
             <Link to={'search'}>
@@ -15,7 +11,7 @@ export const Header = ({showMenu}:Props) => {
                     <circle cx="50" cy="50" r="30" fill='#71c55b' stroke="white" strokeWidth={10} />
                 </svg>
             </Link>
-            <MenuHamb showMenu={showMenu} />
+            <MenuHamb/>
             <svg style={{width: '100%', height: '20px'}} viewBox="0 0 100 100" preserveAspectRatio="none">
                 <path d="M 0 95 H 40 L 60 5 H 100 " fill="none"  stroke='#222' strokeWidth={6} />
             </svg>

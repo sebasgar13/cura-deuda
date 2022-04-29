@@ -169,6 +169,16 @@ export const NavBar = styled.div<NavBarProps>`
     z-index: 100;
 `;
 
+export const NavBarText = styled.p`
+    color: white;
+    text-decoration: none;
+    text-align: right;
+    padding: 5px 10px;
+    &:hover{
+        background-color: #a3f08c;
+    }
+`;
+
 
 export const Title = styled.h3`
     width: 100%;
