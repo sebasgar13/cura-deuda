@@ -11,6 +11,10 @@ export interface ContainerCenterProps{
     height?: number;
 }
 
+export interface ContainerModalProps{
+    show: boolean;
+}
+
 export interface CuadradoProps{
     overflowF?: boolean;
     padding?: number;

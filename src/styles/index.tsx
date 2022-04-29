@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import { BarBackgroundProps, ContainerAroundProps, ContainerCenterProps, CuadradoProps, GridColsProps, LogoProps, NavBarProps } from '../interfaces/styledComponent';
+import { BarBackgroundProps, ContainerAroundProps, ContainerCenterProps, ContainerModalProps, CuadradoProps, GridColsProps, LogoProps, NavBarProps } from '../interfaces/styledComponent';
 
 export const BarBorder = styled.div`
     width: 60%;
@@ -37,18 +37,6 @@ export const Chip = styled.span`
     color: #222;
 `
 
-export const ContainerEnd = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-`;
-export const ContainerStart = styled.div`
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-`;
 
 export const ContainerAround = styled.div<ContainerAroundProps>`
     display: flex;
@@ -77,6 +65,25 @@ export const ContainerCenter = styled.div<ContainerCenterProps>`
     height: ${ props => props.height ? props.height+"vh" : 'auto'};
 `;
 
+export const ContainerEnd = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+`;
+
+export const ContainerFab = styled.div`
+    display: flex;
+    justify-content: end;
+    margin-top: 26px;
+    @media  (min-width: 640px) {
+        position: fixed;
+        margin-top: 0;
+        right: 30px;
+        bottom: 30px;
+    }
+`;
+
 export const ContainerMenuHamb = styled.div`
     width: 40px;
     height: 40px;
@@ -93,6 +100,28 @@ export const ContainerMenuHamb = styled.div`
     padding: 4px;
     overflow: hidden;
 `;
+
+export const ContainerModal = styled.div<ContainerModalProps>`
+    position: absolute;
+    background-color: #d3e3f3;
+    bottom: 0;
+    width: 100%;
+    height: 50vh;
+    max-height: 250px;
+    overflow-X: hidden;
+    overflow-Y: scroll; 
+    padding-bottom: 100px;
+    transform: translateY(${props => props.show? '100': 0}%);
+    transition: all 0.5s ease-in;
+`;
+
+export const ContainerStart = styled.div`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+`;
+
 
 export const Cuadrado = styled.div<CuadradoProps>`
     width: 100%;
@@ -137,11 +166,13 @@ export const NavBar = styled.div<NavBarProps>`
     background-color: #F67270;
     transform: translateX(${props => props.show ? 0 : 200 }%);
     transition: 0.4s all ease-in;
+    z-index: 100;
 `;
 
 
 export const Title = styled.h3`
     width: 100%;
+    text-align: center;
     text-decoration: none;
     font-size: larger;
     font-weight: bold;

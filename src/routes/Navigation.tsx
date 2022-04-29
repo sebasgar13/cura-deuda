@@ -3,6 +3,8 @@ import { Home } from '../components/Home';
 import { Pokemon } from '../components/Pokemon';
 import { ListPokemons } from '../components/ListPokemons';
 import { ListBerries } from '../components/ListBerries';
+import { Welcome } from '../components/Welcome';
+import { Search } from '../components/Search';
 
 export const Navigation = () => {
     return (
@@ -10,10 +12,18 @@ export const Navigation = () => {
             <Routes>
                 <Route path='/'
                     element={<Home />}>
-                    
-                    <Route path="pokemon" element={<>
-                        <Outlet />
-                    </>}>
+                    <Route
+                        index
+                        element={<>
+                            <Welcome />
+                        </>
+                        }
+                    />
+                    <Route path="pokemon" element={
+                        <>
+                            <Outlet />
+                        </>
+                    }>
                         <Route
                             index
                             element={<>
@@ -23,18 +33,8 @@ export const Navigation = () => {
                         />
                         <Route path=":pokemonId" element={<Pokemon />} />
                     </Route>
-                    <Route path="berries" element={<>
-                        <Outlet />
-                    </>}>
-                        <Route
-                            index
-                            element={<>
-                                <ListBerries />
-                            </>
-                            }
-                        />
-                        <Route path=":berriesId" element={<Pokemon />} />
-                    </Route>
+                    <Route path="berries" element={<ListBerries />} />
+                    <Route path='search' element={<Search />} />
                 </Route>
             </Routes>
         </BrowserRouter>

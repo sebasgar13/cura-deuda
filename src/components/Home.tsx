@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { ContainerCenter, Cuadrado } from '../styles';
 import { Header } from './pokedex/Header';
 import { NavBar } from '../styles/index';
 import { NavBarLink } from './pokedex/NavBarLink';
+import { FAB } from './FAB';
 
 export const Home = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -19,6 +20,7 @@ export const Home = () => {
                         <NavBarLink route='berries' title='Bayas' />
                     </NavBar>
                 </Cuadrado>
+                <FAB />
             </div>
         </ContainerCenter>
     )
