@@ -8,8 +8,9 @@ import { Berries } from '../interfaces/reqResponseBerries';
 import { PokemonContainer } from './PokemonContainer';
 import { ItemBar } from './ItemBar';
 import { QuitButton } from './QuitButton';
+import { ListBerriesProps } from '../interfaces/components';
 
-export const ListBerries = () => {
+export const ListBerries = ({nameSearch = ''}:ListBerriesProps) => {
     const [berries, setBerries] = useState<PokLink[]>([]);
     const [uri, setUri] = useState<string>("");
     const [berry, setBerry] = useState<Berries | null>(null);
@@ -42,34 +43,24 @@ export const ListBerries = () => {
 
     return (
         <div className='relative'>
-            {(berries.length > 0 && true )?
+            {berries.length > 0 &&  
                 <Cuadrado>
                     {berries.map(berryMap => { 
-                        return(
-                            <div key={berryMap.name} onClick={() => showResponse(berryMap.url)}>
-                                <ContainerAround hover>
-                                    <Logo src={`https://cdn.pixabay.com/photo/2015/09/07/09/50/christmas-928319_1280.png`} alt="" />
-                                    <Title>{berryMap.name}</Title    >
-                                </ContainerAround>
-                                <hr />
-                            </div>
-                        )
+                        if(berryMap.name.includes(nameSearch)){
+                            return(
+                                <div key={berryMap.name} onClick={() => showResponse(berryMap.url)}>
+                                    <ContainerAround hover>
+                                        <Logo src={`https://cdn.pixabay.com/photo/2015/09/07/09/50/christmas-928319_1280.png`} alt="" />
+                                        <Title>{berryMap.name}</Title    >
+                                    </ContainerAround>
+                                    <hr />
+                                </div>
+                            )
+                        } else {
+                            return <></>;
+                        }
                     })}
                 </Cuadrado>
-                : 
-                <Cuadrado>
-                    {berries.map(berryMap => { 
-                        return(
-                            <div key={berryMap.name} onClick={() => showResponse(berryMap.url)}>
-                                <ContainerAround hover>
-                                    <Logo src={`https://cdn.pixabay.com/photo/2015/09/07/09/50/christmas-928319_1280.png`} alt="" />
-                                    <Title>{berryMap.name}</Title    >
-                                </ContainerAround>
-                                <hr />
-                            </div>
-                        )
-                    })}
-                4</Cuadrado>
             }
             <div className='absoluteBottom'>
                 <div style={{height: '50px'}} className='fondoBotones'></div>

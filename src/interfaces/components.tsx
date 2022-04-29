@@ -4,6 +4,10 @@ export interface ItemBarProps {
     background?: string,
 }
 
+export interface ListBerriesProps{
+    nameSearch?: string;
+}
+
 export interface ModalProps{
     show: boolean;
     children: JSX.Element;
